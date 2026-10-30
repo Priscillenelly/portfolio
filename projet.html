@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Démarrer votre projet – Priscille Kouadio</title>
+<meta name="description" content="Parlez-moi de votre projet web ou mobile : type, besoins, budget et délai. Je vous réponds sous 48 h.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%23271642%22/%3E%3Ctext x=%2232%22 y=%2244%22 text-anchor=%22middle%22 font-family=%22Syne,'Arial Black',Arial,sans-serif%22 font-weight=%22800%22 font-size=%2246%22 fill=%22%23F6EEFF%22%3Ep%3Ctspan fill=%22%23FF4F9A%22%3E.%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#120A1F; --card:#271642; --pink:#FF4F9A; --lilac:#B28CFF; --peach:#FFC8A8; --text:#F6EEFF; --muted:#B7A6CF;
+  --head:'Syne',system-ui,sans-serif; --body:'Outfit',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:300 1.05rem/1.6 var(--body);min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(600px 400px at 85% 0%,rgba(255,79,154,.18),transparent 70%),radial-gradient(500px 400px at 0% 100%,rgba(178,140,255,.16),transparent 70%)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lilac);outline-offset:3px}
+.wrap{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:28px 24px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:56px}
+.logo{font:800 1.1rem var(--head);text-decoration:none}.logo span{color:var(--pink)}
+.back{color:var(--muted);text-decoration:none;font-size:.95rem}.back:hover{color:var(--text)}
+.eyebrow{display:inline-block;border:1px solid rgba(178,140,255,.3);border-radius:999px;padding:5px 16px;font-size:.88rem;color:var(--muted);margin-bottom:20px}
+h1{font:800 clamp(2.4rem,7vw,4.4rem)/1 var(--head);letter-spacing:-.03em;margin-bottom:16px}
+h1 em{font-style:normal;color:var(--pink)}
+.intro{color:var(--muted);max-width:56ch;margin-bottom:36px}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:22px}
+.steps li{list-style:none;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:10px;border-top:3px solid rgba(178,140,255,.22);transition:.3s}
+.steps li.on{color:var(--pink);border-color:var(--pink)}
+.steps li.done{color:var(--lilac);border-color:var(--lilac)}
+
+.card{background:var(--card);border:1px solid rgba(178,140,255,.22);border-radius:28px;padding:36px}
+fieldset{border:0;padding:0;min-width:0;display:none}
+fieldset.on{display:block;animation:in .35s ease}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+legend{font:800 1.7rem/1.15 var(--head);margin-bottom:6px;padding:0}
+.hint{color:var(--muted);font-size:.95rem;margin-bottom:24px}
+
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+.opt span{display:block;height:100%;padding:16px 18px;border-radius:18px;border:1.5px solid rgba(178,140,255,.28);background:rgba(18,10,31,.45);transition:.2s}
+.opt b{display:block;font:600 1rem var(--body);margin-bottom:2px}
+.opt small{color:var(--muted);font-size:.86rem;line-height:1.35;display:block}
+.opt:hover span{border-color:var(--lilac)}
+.opt input:checked+span{border-color:var(--pink);background:rgba(255,79,154,.12);box-shadow:0 0 0 3px rgba(255,79,154,.18)}
+.opt input:focus-visible+span{outline:3px solid var(--lilac);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 22px}
+.chips .opt span{padding:8px 16px;border-radius:999px}
+
+label.f{display:block;margin-bottom:18px}
+label.f>span{display:block;font-size:.9rem;color:var(--muted);margin-bottom:6px}
+input[type=text],input[type=email],input[type=tel],textarea{width:100%;font:inherit;color:var(--text);background:rgba(18,10,31,.55);border:1.5px solid rgba(178,140,255,.28);border-radius:16px;padding:13px 16px;transition:border-color .2s}
+textarea{min-height:130px;resize:vertical}
+input::placeholder,textarea::placeholder{color:rgba(183,166,207,.6)}
+input:focus,textarea:focus{outline:none;border-color:var(--pink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.err{color:var(--peach);font-size:.92rem;min-height:1.4em;margin-top:6px}
+
+.nav{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap}
+.btn{font:600 1rem var(--body);display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:999px;border:1.5px solid var(--pink);background:var(--pink);color:var(--bg);cursor:pointer;text-decoration:none;transition:.2s}
+.btn:hover{background:transparent;color:var(--pink)}
+.btn.ghost{background:transparent;color:var(--text);border-color:rgba(178,140,255,.4)}
+.btn.ghost:hover{border-color:var(--lilac);color:var(--lilac)}
+.btn[hidden]{display:none}
+
+.recap{display:grid;gap:10px;margin:8px 0 6px}
+.recap div{display:flex;gap:14px;padding:12px 16px;border-radius:14px;background:rgba(18,10,31,.5)}
+.recap dt{flex:0 0 110px;color:var(--muted);font-size:.9rem}
+.recap dd{margin:0;overflow-wrap:anywhere}
+.sent{display:none;text-align:center;padding:20px 0}
+.sent.on{display:block}
+.sent h2{font:800 2rem var(--head);margin-bottom:10px}
+.sent p{color:var(--muted);margin-bottom:22px}
+.reassure{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:28px;color:var(--muted);font-size:.92rem}
+.reassure span::before{content:"✓ ";color:var(--pink)}
+@media(max-width:640px){.card{padding:24px 20px}.two{grid-template-columns:1fr}.steps li{font-size:.68rem}.recap div{flex-direction:column;gap:2px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="logo" href="./">priscille<span>.dev</span></a>
+    <a class="back" href="./#projets">← Retour au portfolio</a>
+  </div>
+
+  <span class="eyebrow">Réponse sous 48 h</span>
+  <h1>Démarrons <em>votre projet</em></h1>
+  <p class="intro">Quatre petites étapes pour me dire ce que vous imaginez. Pas besoin d’avoir tout défini : une idée suffit, on affinera ensemble.</p>
+
+  <ol class="steps" id="steps" aria-label="Progression">
+    <li class="on">1 · Projet</li><li>2 · Besoins</li><li>3 · Budget</li><li>4 · Contact</li>
+  </ol>
+
+  <form class="card" id="form" novalidate>
+    <fieldset class="on" data-step="0">
+      <legend>Quel type de projet ?</legend>
+      <p class="hint">Choisissez ce qui s’en rapproche le plus.</p>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="type" value="Site vitrine"><span><b>Site vitrine</b><small>Présenter votre activité, votre marque ou votre commune.</small></span></label>
+        <label class="opt"><input type="radio" name="type" value="Boutique en ligne"><span><b>Boutique en ligne</b><small>Vendre vos produits avec paiement Mobile Money.</small></span></label>
+        <label class="opt"><input type="radio" name="type" value="Application web"><span><b>Application web</b><small>Gestion, tableau de bord, espace membres…</small></span></label>
+        <label class="opt"><input type="radio" name="type" value="Application mobile"><span><b>Application mobile</b><small>Une app pour Android et iOS.</small></span></label>
+        <label class="opt"><input type="radio" name="type" value="Refonte d’un site"><span><b>Refonte</b><small>Moderniser un site ou une interface existante.</small></span></label>
+        <label class="opt"><input type="radio" name="type" value="Autre"><span><b>Autre</b><small>Une idée à part ? Racontez-moi.</small></span></label>
+      </div>
+      <p class="err" role="alert"></p>
+    </fieldset>
+
+    <fieldset data-step="1">
+      <legend>De quoi avez-vous besoin ?</legend>
+      <p class="hint">Sélectionnez les fonctionnalités qui comptent (plusieurs choix possibles).</p>
+      <div class="chips">
+        <label class="opt"><input type="checkbox" name="feat" value="Paiement Mobile Money"><span>Paiement Mobile Money</span></label>
+        <label class="opt"><input type="checkbox" name="feat" value="Espace connexion / comptes"><span>Comptes utilisateurs</span></label>
+        <label class="opt"><input type="checkbox" name="feat" value="Tableau de bord admin"><span>Tableau de bord admin</span></label>
+        <label class="opt"><input type="checkbox" name="feat" value="Formulaire de contact / réservation"><span>Réservation / contact</span></label>
+        <label class="opt"><input type="checkbox" name="feat" value="Multilingue"><span>Multilingue</span></label>
+        <label class="opt"><input type="checkbox" name="feat" value="Design sur mesure"><span>Design sur mesure</span></label>
+        <label class="opt"><input type="checkbox" name="feat" value="Hébergement et nom de domaine"><span>Hébergement &amp; domaine</span></label>
+      </div>
+      <label class="f"><span>Décrivez votre idée en quelques phrases</span>
+        <textarea name="desc" placeholder="Ex. : Je voudrais une application pour gérer les rendez-vous de mon salon de coiffure."></textarea></label>
+      <p class="err" role="alert"></p>
+    </fieldset>
+
+    <fieldset data-step="2">
+      <legend>Budget et délai</legend>
+      <p class="hint">Une fourchette m’aide à vous proposer une solution réaliste.</p>
+      <div class="opts" style="margin-bottom:22px">
+        <label class="opt"><input type="radio" name="budget" value="Moins de 150 000 FCFA"><span><b>&lt; 150 000 FCFA</b></span></label>
+        <label class="opt"><input type="radio" name="budget" value="150 000 – 400 000 FCFA"><span><b>150 – 400 000 FCFA</b></span></label>
+        <label class="opt"><input type="radio" name="budget" value="400 000 – 1 000 000 FCFA"><span><b>400 000 – 1 M FCFA</b></span></label>
+        <label class="opt"><input type="radio" name="budget" value="Plus de 1 000 000 FCFA"><span><b>&gt; 1 M FCFA</b></span></label>
+        <label class="opt"><input type="radio" name="budget" value="À discuter"><span><b>À discuter</b></span></label>
+      </div>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="delay" value="Urgent (moins de 2 semaines)"><span><b>Urgent</b><small>Moins de 2 semaines</small></span></label>
+        <label class="opt"><input type="radio" name="delay" value="Environ 1 mois"><span><b>1 mois</b></span></label>
+        <label class="opt"><input type="radio" name="delay" value="2 à 3 mois"><span><b>2 à 3 mois</b></span></label>
+        <label class="opt"><input type="radio" name="delay" value="Flexible"><span><b>Flexible</b></span></label>
+      </div>
+      <p class="err" role="alert"></p>
+    </fieldset>
+
+    <fieldset data-step="3">
+      <legend>Comment vous joindre ?</legend>
+      <p class="hint">Vos informations servent uniquement à vous répondre.</p>
+      <div class="two">
+        <label class="f"><span>Nom complet</span><input type="text" name="name" autocomplete="name" placeholder="Votre nom"></label>
+        <label class="f"><span>Entreprise (facultatif)</span><input type="text" name="company" autocomplete="organization"></label>
+      </div>
+      <div class="two">
+        <label class="f"><span>E-mail</span><input type="email" name="email" autocomplete="email" placeholder="vous@exemple.com"></label>
+        <label class="f"><span>Téléphone / WhatsApp</span><input type="tel" name="phone" autocomplete="tel" placeholder="+225 …"></label>
+      </div>
+      <dl class="recap" id="recap" aria-label="Récapitulatif"></dl>
+      <p class="err" role="alert"></p>
+    </fieldset>
+
+    <div class="nav" id="nav">
+      <button type="button" class="btn ghost" id="prev" hidden>← Retour</button>
+      <button type="button" class="btn" id="next">Continuer →</button>
+      <button type="submit" class="btn" id="send" hidden>Envoyer ma demande</button>
+    </div>
+
+    <div class="sent" id="sent" role="status">
+      <h2>Merci ! 🎉</h2>
+      <p>Votre application de messagerie s’est ouverte avec votre demande prête à partir. Si rien ne s’affiche, écrivez-moi directement :</p>
+      <a class="btn" id="fallback" href="mailto:priscillekouadio2102@gmail.com">priscillekouadio2102@gmail.com</a>
+    </div>
+  </form>
+
+  <div class="reassure"><span>Devis gratuit</span><span>Réponse sous 48 h</span><span>Sans engagement</span></div>
+</div>
+
+<script>
+(function(){
+  var TO='priscillekouadio2102@gmail.com';
+  var form=document.getElementById('form'),
+      sets=[].slice.call(form.querySelectorAll('fieldset')),
+      lis=[].slice.call(document.querySelectorAll('#steps li')),
+      prev=document.getElementById('prev'),next=document.getElementById('next'),send=document.getElementById('send'),
+      step=0;
+
+  function val(n){var e=form.elements[n];return e&&e.value?e.value.trim():''}
+  function checked(n){return [].slice.call(form.querySelectorAll('[name="'+n+'"]:checked')).map(function(i){return i.value})}
+
+  function show(i){
+    step=i;
+    sets.forEach(function(s,k){s.classList.toggle('on',k===i)});
+    lis.forEach(function(l,k){l.classList.toggle('on',k===i);l.classList.toggle('done',k<i)});
+    prev.hidden=i===0; next.hidden=i===sets.length-1; send.hidden=i!==sets.length-1;
+    if(i===sets.length-1) recap();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function fail(msg){sets[step].querySelector('.err').textContent=msg;return false}
+  function ok(){sets[step].querySelector('.err').textContent='';return true}
+
+  function validate(){
+    if(step===0 && !checked('type').length) return fail('Choisissez un type de projet pour continuer.');
+    if(step===1 && val('desc').length<10) return fail('Décrivez votre idée en quelques mots (10 caractères minimum).');
+    if(step===2 && (!checked('budget').length||!checked('delay').length)) return fail('Indiquez une fourchette de budget et un délai.');
+    if(step===3){
+      if(!val('name')) return fail('Indiquez votre nom.');
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email'))) return fail('Entrez une adresse e-mail valide.');
+    }
+    return ok();
+  }
+
+  function row(k,v){return '<div><dt>'+k+'</dt><dd></dd></div>'}
+  function recap(){
+    var data=[['Projet',checked('type')[0]],['Besoins',checked('feat').join(', ')||'—'],['Budget',checked('budget')[0]],['Délai',checked('delay')[0]]];
+    var box=document.getElementById('recap');box.innerHTML='';
+    data.forEach(function(d){
+      var wrap=document.createElement('div'),dt=document.createElement('dt'),dd=document.createElement('dd');
+      dt.textContent=d[0];dd.textContent=d[1];wrap.appendChild(dt);wrap.appendChild(dd);box.appendChild(wrap);
+    });
+  }
+
+  function body(){
+    return ['Bonjour Priscille,','',
+      'Je souhaite démarrer un projet.','',
+      'Type de projet : '+checked('type')[0],
+      'Besoins : '+(checked('feat').join(', ')||'—'),
+      'Budget : '+checked('budget')[0],
+      'Délai : '+checked('delay')[0],'',
+      'Description :',val('desc'),'',
+      'Nom : '+val('name'),
+      'Entreprise : '+(val('company')||'—'),
+      'E-mail : '+val('email'),
+      'Téléphone : '+(val('phone')||'—')].join('\n');
+  }
+
+  next.addEventListener('click',function(){if(validate()) show(step+1)});
+  prev.addEventListener('click',function(){show(step-1)});
+  form.addEventListener('keydown',function(e){
+    if(e.key==='Enter' && e.target.tagName!=='TEXTAREA'){e.preventDefault(); if(step<sets.length-1) next.click(); else form.requestSubmit()}
+  });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!validate()) return;
+    var subject='Nouveau projet : '+checked('type')[0]+' – '+val('name');
+    var href='mailto:'+TO+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body());
+    document.getElementById('fallback').href=href;
+    sets.forEach(function(s){s.classList.remove('on')});
+    document.getElementById('nav').style.display='none';
+    document.getElementById('steps').style.display='none';
+    document.getElementById('sent').classList.add('on');
+    window.location.href=href;
+  });
+})();
+</script>
+</body>
+</html>
