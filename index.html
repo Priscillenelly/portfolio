@@ -202,6 +202,50 @@ html.loading{overflow:hidden}
 .start:hover .go-circle{transform:rotate(45deg);background:var(--peach)}
 @media(max-width:520px){.start{width:100%;justify-content:space-between}}
 @media(prefers-reduced-motion:reduce){.start,.start .go-circle{transition:none}}
+
+/* ===== Correctifs responsive (téléphone) ===== */
+html{-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{overflow-x:hidden}
+main{overflow-x:clip}
+img{max-width:100%}
+@media(max-width:1000px){
+  #projets .sub{display:none}
+  #projets h2{margin-bottom:28px}
+}
+@media(max-width:700px){
+  .wrap{padding:0 20px}
+  section{padding-top:90px}
+  .contact{margin-top:100px;padding:70px 0 44px;border-radius:32px 32px 0 0}
+  .band{margin:20px 0 0}
+  .track{font-size:1.2rem;gap:30px}
+  .code .ln{white-space:normal}
+  .code pre{white-space:pre-wrap;word-break:break-word}
+  .code{overflow:hidden}
+}
+@media(max-width:520px){
+  .hero{padding:104px 0 60px;gap:56px}
+  .visual{width:min(74%,300px)}
+  .status{font-size:.86rem;padding:6px 14px}
+  .lead{font-size:1.3rem}
+  .cta{flex-direction:column;align-items:stretch;gap:12px}
+  .cta .btn{justify-content:center;width:100%}
+  .start{width:100%;justify-content:space-between;gap:12px;padding:7px 7px 7px 24px;font-size:1.02rem;margin-top:12px}
+  .start .go-circle{width:48px;height:48px;flex:none}
+  .has-shot .body,.body{padding:22px 20px 24px}
+  .has-shot .body h3{font-size:1.45rem}
+  .body h3{font-size:1.5rem}
+  .shot{height:auto;aspect-ratio:auto;object-fit:contain;border-radius:12px}
+  .panels{gap:12px}.panel{border-radius:22px}
+  .card{padding:22px}
+  .pkg{padding:0 18px 18px;font-size:.78rem}
+  .links a,.links span{padding:9px 18px}
+  .mail{font-size:.95rem;gap:8px;word-break:normal;overflow-wrap:anywhere;text-underline-offset:5px;text-decoration-thickness:2px}
+}
+@media(max-width:400px){
+  h1{font-size:3.2rem}
+  header.top nav{padding:8px 8px 8px 16px;gap:12px}
+  .pill{padding:8px 16px}
+}
 </style>
 </head>
 <body>
@@ -376,6 +420,7 @@ html.loading{overflow:hidden}
   <section class="contact" id="contact">
     <div class="wrap">
       <h2>Travaillons<br>ensemble.</h2>
+      <p style="max-width:50ch;margin-bottom:28px">Je cherche un stage ou une alternance en développement Full Stack. Écris-moi, je te réponds vite.</p>
       <a class="mail" href="mailto:priscillekouadio2102@gmail.com"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>priscillekouadio2102@gmail.com</a>
       <div class="links">
         <a href="https://github.com/Priscillenelly"><svg class="ic" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
